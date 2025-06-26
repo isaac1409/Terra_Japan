@@ -115,10 +115,13 @@ COPY .github .github
 ENV COMMIT_SHA=${COMMIT_SHA}
 ENV BUILD_BRANCH=${BUILD_BRANCH}
 
+
+#Agregados por Isaac Muñoz 
 RUN go run ./pkg/build/wire/cmd/wire/main.go gen -tags oss ./pkg/server
 RUN go run ./pkg/build/wire/cmd/wire/main.go gen -tags oss ./pkg/server && \
     go build -tags oss -o bin/grafana ./pkg/cmd/grafana
 
+#Originalmente estaba asi
 # RUN make build-go GO_BUILD_TAGS=${GO_BUILD_TAGS} WIRE_TAGS=${WIRE_TAGS}
 
 # From-tarball build stage
